@@ -17,7 +17,6 @@ public class MainPageBurgersTests {
     public void setup() {
         //открыть браузер в максимальном разрешении
         Configuration.startMaximized = true;
-
     }
 
     @After
@@ -27,38 +26,41 @@ public class MainPageBurgersTests {
     }
 
     @Test
-    @Description("Переход к разделу «Булки» работает")
-    public void checkSpanBunsConstructorIsAvailable() {
+    @Description("Клик на раздел Начинки")
+    public void checkClickFillingsTest() {
 
         //перейти на страницу тестового стенда
         MainPageBurgers mainPage = open(HOME_PAGE_BURGERS, MainPageBurgers.class);
-        //проскроллить до начинки
-        mainPage.scrollToFillings();
-        //кликнуть на "Булки"
-        mainPage.clickByBuns();
-        //проверить, что элементы булок отображены
-        assertTrue(mainPage.isDisplayedBuns());
+
+        //кликнуть на раздел "Начинки"
+        mainPage.clickFilling();
+
+        //Проверить на дисплее после перехода в раздел "Начинки"
+        assertTrue("Нахождение не в разделе 'Начинки'", mainPage.isHeaderFillingVisible());
     }
 
     @Test
-    @Description("Переход к разделу «Соусы» работает")
-    public void checkSpanSaucesConstructorIsAvailable() {
+    @Description("Клик на раздел Булки")
+    public void checkClickBunsTest() {
+
         //перейти на страницу тестового стенда
         MainPageBurgers mainPage = open(HOME_PAGE_BURGERS, MainPageBurgers.class);
-        //кликнуть на "Соусы"
-        mainPage.clickBySauces();
-        //проверить, что элементы соусов отображены
-        assertTrue(mainPage.isDisplayedSauces());
+
+        //проверить на дисплее заголовок "Булки"
+        assertTrue(mainPage.isHeaderBunsVisible());
     }
 
     @Test
-    @Description("Переход к разделу «Начинки» работает")
-    public void checkSpanMeatsConstructorIsAvailable() {
+    @Description("Клик на раздел Соусы")
+    public void checkClickSaucesTest() {
+
         //перейти на страницу тестового стенда
         MainPageBurgers mainPage = open(HOME_PAGE_BURGERS, MainPageBurgers.class);
-        //кликнуть на "Начинки"
-        mainPage.clickByFillings();
-        //проверить, что элементы начинок отображены
-        assertTrue(mainPage.isDisplayedMeats());
+
+        //кликнуть на раздел "Соусы"
+        mainPage.clickSauces();
+
+        //проверить на дисплее после перехода в раздел "Начинки"
+        assertTrue("Нахождение не в разделе 'Соусы'", mainPage.isHeaderSaucesVisible());
     }
 }

@@ -27,6 +27,7 @@ public class RegistrationPageBurgers {
     //локатор текста "Некорректный пароль"
     @FindBy(how = How.XPATH,using = ".//p[@class='input__error text_type_main-default']")
     private SelenideElement unCorrectPassword;
+
     //метод заполнения поля "Имя"
     public void setNameField(String name) {
         nameField.setValue(name);
